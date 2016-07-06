@@ -188,6 +188,11 @@ angular.module('angularResizable', [])
                 scope.$watch('rDisabled', function(disabled) {
                     dir.forEach(function(direction) {
                         if (disabled) {
+                            // remove all existing grabbers
+                            var existingGrabber = element[0].getElementsByClassName('rg-' + direction);
+                            for (var i = 0; i < existingGrabber.length; i++) {
+                                element[0].removeChild(existingGrabber[i]);
+                            }
                             return;
                         }
 
